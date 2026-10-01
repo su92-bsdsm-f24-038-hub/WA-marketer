@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Plan &amp; License — WAMarketer</title>
+  <link rel="icon" href="icons/icon48.png">
+  <link rel="stylesheet" href="plans.css">
+  <style>
+    /* Same look as the onboarding and Settings pages: light background, white rounded cards, green accents. */
+    body { background: linear-gradient(180deg, #e9f8ef 0%, #f4f7f6 320px); min-height: 100vh; }
+    .embedded body { background: transparent; }
+    .wrap { max-width: 980px; }
+    .page-header { margin-bottom: 22px; }
+    .page-header nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    .page-header nav a { font-size: 14px; font-weight: 600; text-decoration: none; }
+    .page-header nav a:hover { text-decoration: underline; }
+    .intro { margin-bottom: 22px; }
+    .intro .lead { margin-bottom: 0; }
+    .card { background: #fff; border-radius: 20px; box-shadow: 0 1px 2px rgba(17,27,33,.05), 0 18px 40px rgba(7,94,84,.07); padding: clamp(18px, 3.5vw, 28px); }
+    .embedded .card { box-shadow: none; }
+    .eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+    .section { margin-top: 40px; }
+    .section h2 { margin-bottom: 6px; }
+    .two { align-items: stretch; }
+    .two > div > .card { height: 100%; }
+    .plan.pro-plan { border-width: 2px; box-shadow: 0 0 0 4px var(--accent-soft), 0 18px 40px rgba(7,94,84,.1); }
+    .plan .ribbon { background: #0e7a5f; }
+    .faq summary { list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq summary::after { content: "+"; font: 700 20px/1 Poppins, sans-serif; color: var(--accent-ink); }
+    .faq details[open] summary::after { content: "–"; }
+    footer { text-align: center; color: var(--subtle); font-size: 13px; margin-top: 36px; }
+    .embedded footer { display: none; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="page-header">
+      <img class="logo-light" src="downlabs-logo.png" alt="WAMarketer — Bulk Sender & CRM">
+      <nav aria-label="Pages">
+        <a href="welcome.html">Getting started</a>
+        <a href="options.html">Settings</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      <p class="eyebrow">Your plan</p>
+      <h1>Plan &amp; License</h1>
+      <p class="lead">Your current plan, today's usage and your Pro license.</p>
+    </div>
+
+    <div class="two">
+      <div data-wam="status" aria-live="polite"></div>
+      <div data-wam="activate"></div>
+    </div>
+
+    <section class="section">
+      <p class="eyebrow">Pricing</p>
+      <h2>Compare plans</h2>
+      <p class="desc">The free plan includes every feature, capped at <b data-wam-free-limit>50</b> messages a day. Pro removes the cap.</p>
+      <div data-wam="pricing"></div>
+    </section>
+
+    <section class="section">
+      <p class="eyebrow">Help</p>
+      <h2>Questions</h2>
+      <div data-wam="faq"></div>
+    </section>
+
+    <footer>WAMarketer · Secure checkout by Gumroad</footer>
+  </main>
+  <script src="plans-ui.js"></script>
+</body>
+</html>

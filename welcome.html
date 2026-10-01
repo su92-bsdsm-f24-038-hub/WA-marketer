@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Welcome to WAMarketer</title>
+  <link rel="icon" href="icons/icon48.png">
+  <link rel="stylesheet" href="plans.css">
+  <link rel="stylesheet" href="ai-setup.css">
+  <link rel="stylesheet" href="welcome.css">
+</head>
+<body>
+  <div class="onb">
+    <header class="onb-top">
+      <img class="onb-logo" src="downlabs-logo.png" alt="WAMarketer — Bulk Sender & CRM">
+      <a class="onb-skip" href="plans.html">Plan &amp; License</a>
+    </header>
+
+    <nav class="onb-progress" aria-label="Setup progress">
+      <ol>
+        <li><button type="button" data-goto="1"><span class="dotnum">1</span><span class="lbl">Welcome</span></button></li>
+        <li><button type="button" data-goto="2"><span class="dotnum">2</span><span class="lbl">Free trial</span></button></li>
+        <li><button type="button" data-goto="3"><span class="dotnum">3</span><span class="lbl">WhatsApp</span></button></li>
+        <li><button type="button" data-goto="4"><span class="dotnum">4</span><span class="lbl">AI replies</span></button></li>
+        <li><button type="button" data-goto="5"><span class="dotnum">5</span><span class="lbl">Launch</span></button></li>
+      </ol>
+    </nav>
+
+    <div class="gate-note" id="gateNote" role="status" hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <span>Finish these quick setup steps first. Your dashboard opens right after.</span>
+    </div>
+
+    <main class="onb-card" aria-live="polite">
+      <!-- 1 · Welcome -->
+      <section class="screen" data-step="1" aria-labelledby="s1-title">
+        <p class="eyebrow">Step 1 of 5</p>
+        <h1 id="s1-title" tabindex="-1">Welcome to WAMarketer</h1>
+        <p class="lead">Turn WhatsApp Web into a marketing machine: personalized bulk campaigns, automatic follow-ups, AI replies and a built-in CRM. Everything runs in your browser, with no account and no server.</p>
+        <div class="tiles">
+          <div class="tile">
+            <span class="tile-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l18-5v12L3 14v-3z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></span>
+            <h3>Bulk campaigns</h3>
+            <p>Import a CSV or paste numbers, personalize each message and attach images, videos or PDFs.</p>
+          </div>
+          <div class="tile">
+            <span class="tile-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/><path d="M12 7v5l3 2"/></svg></span>
+            <h3>Automatic follow-ups</h3>
+            <p>Day 3, 7 and 14 follow-ups that stop as soon as someone replies.</p>
+          </div>
+          <div class="tile">
+            <span class="tile-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+            <h3>Safe by design</h3>
+            <p>Human-like delays, sending hours, daily limits and STOP opt-outs protect your number.</p>
+          </div>
+        </div>
+        <p class="hint">Setup takes about two minutes.</p>
+      </section>
+
+      <!-- 2 · Plan -->
+      <section class="screen" data-step="2" aria-labelledby="s2-title" hidden>
+        <p class="eyebrow">Step 2 of 5</p>
+        <h1 id="s2-title" tabindex="-1">Start with <span data-wam-trial-hours>24</span> hours free</h1>
+        <p class="lead">Try everything with unlimited messages. When the trial ends you keep every feature on the free plan with <b data-wam-free-limit>50</b> messages a day. No card needed.</p>
+
+        <div class="plan-state" id="planState" hidden></div>
+
+        <div class="choices" role="radiogroup" aria-label="How do you want to start?">
+          <label class="choice" data-choice="trial">
+            <input type="radio" name="start" value="trial" checked>
+            <span class="choice-body">
+              <span class="choice-head"><strong>Activate <span data-wam-trial-hours>24</span>-hour free trial</strong><span class="badge">Recommended</span></span>
+              <span class="choice-desc">Unlimited messages on every feature, starting now.</span>
+              <span class="mini-timeline" aria-hidden="true">
+                <span><b>Today</b>Unlimited</span>
+                <span><b>After <span data-wam-trial-hours>24</span>h</b><span data-wam-free-limit>50</span> messages/day, free</span>
+                <span><b>Anytime</b>Upgrade to Pro</span>
+              </span>
+            </span>
+          </label>
+          <label class="choice" data-choice="pro">
+            <input type="radio" name="start" value="pro">
+            <span class="choice-body">
+              <span class="choice-head"><strong>Go Pro · <span data-wam-price>$9.99/month</span></strong></span>
+              <span class="choice-desc">Unlimited messages every day. Secure checkout by Gumroad, cancel anytime.</span>
+            </span>
+          </label>
+          <label class="choice" data-choice="key">
+            <input type="radio" name="start" value="key">
+            <span class="choice-body">
+              <span class="choice-head"><strong>I already have a license key</strong></span>
+              <span class="choice-desc">Paste the key from your Gumroad receipt email.</span>
+            </span>
+          </label>
+        </div>
+        <div class="key-box" id="keyBox" hidden><div data-wam="activate"></div></div>
+        <p class="msg" id="planMsg" role="status"></p>
+        <p class="hint"><a href="plans.html" target="_blank" rel="noopener">Compare Free and Pro</a></p>
+      </section>
+
+      <!-- 3 · WhatsApp -->
+      <section class="screen" data-step="3" aria-labelledby="s3-title" hidden>
+        <p class="eyebrow">Step 3 of 5</p>
+        <h1 id="s3-title" tabindex="-1">Connect WhatsApp Web</h1>
+        <p class="lead">WAMarketer works inside WhatsApp Web, so it sends from your own number.</p>
+        <ol class="howto">
+          <li><b>Open WhatsApp Web</b> in this browser.</li>
+          <li><b>Link your phone:</b> in WhatsApp on your phone, go to <i>Settings → Linked devices → Link a device</i> and scan the QR code.</li>
+          <li><b>Find the sidebar</b> on the right. Switch between <i>CRM</i> and <i>Marketing</i> at the top of it.</li>
+          <li><b>Keep the tab open</b> while campaigns run. It can stay in the background.</li>
+        </ol>
+        <div class="status-line" id="waStatus"><span class="sdot"></span><span>Checking for an open WhatsApp Web tab…</span></div>
+        <div class="row"><a class="btn primary" id="openWa" href="https://web.whatsapp.com/" target="_blank" rel="noopener">Open WhatsApp Web</a></div>
+      </section>
+
+      <!-- 4 · AI -->
+      <section class="screen" data-step="4" aria-labelledby="s4-title" hidden>
+        <p class="eyebrow">Step 4 of 5 · Optional</p>
+        <h1 id="s4-title" tabindex="-1">Connect your AI</h1>
+        <p class="lead">Let AI answer customers who reply to your campaigns, around the clock. Use your own API key from OpenAI, Anthropic (Claude), Google Gemini, Groq, OpenRouter, Ollama and more. Requests go straight from your browser to that provider.</p>
+        <div class="status-line" id="aiStatus"><span class="sdot"></span><span>Checking your AI settings…</span></div>
+        <div class="row" id="aiOpenRow"><button class="btn primary" type="button" id="aiOpen" aria-expanded="false" aria-controls="aiPanel">Set up AI provider</button></div>
+        <div class="ai-panel" id="aiPanel" hidden>
+          <div class="panel-head">
+            <h3>AI provider</h3>
+            <button class="btn ghost" type="button" id="aiClose">Hide</button>
+          </div>
+          <div id="aiMount"></div>
+          <p class="hint">Voice-note transcription and reply timing are on the <a href="options.html" target="_blank" rel="noopener">Settings page</a>.</p>
+        </div>
+        <p class="hint">Campaigns and follow-ups work without AI. You can set it up later from the extension icon → Settings.</p>
+      </section>
+
+      <!-- 5 · Launch -->
+      <section class="screen" data-step="5" aria-labelledby="s5-title" hidden>
+        <p class="eyebrow">Step 5 of 5</p>
+        <h1 id="s5-title" tabindex="-1">You're ready to launch</h1>
+        <div class="summary" id="planSummary"></div>
+        <h3 class="sub-h">Your first campaign in 4 moves</h3>
+        <ol class="howto">
+          <li><b>Add recipients:</b> upload a CSV or paste numbers with the country code.</li>
+          <li><b>Write the message:</b> use variables like <code>{{name}}</code> and attach an image or PDF if you like.</li>
+          <li><b>Send a test</b> to your own number and check how it looks.</li>
+          <li><b>Start sending</b> with the safe random delay, daily limit and sending hours left on.</li>
+        </ol>
+        <div class="safe-note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20 6v5c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Only message people who agreed to hear from you. Messaging strangers who report you can get a WhatsApp number banned.</span>
+        </div>
+        <div class="row">
+          <a class="btn primary" id="finishCampaign" href="crm/index.html#/bulk-sender">Create my first campaign</a>
+          <a class="btn" href="https://web.whatsapp.com/" target="_blank" rel="noopener">Open WhatsApp Web</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="onb-nav">
+      <button class="btn ghost" type="button" id="backBtn">Back</button>
+      <span class="onb-count" id="stepCount">1 / 5</span>
+      <button class="btn primary" type="button" id="nextBtn">Get started</button>
+    </footer>
+  </div>
+  <script src="ai-providers.js"></script>
+  <script src="ai-setup.js"></script>
+  <script src="plans-ui.js"></script>
+  <script src="welcome.js"></script>
+</body>
+</html>

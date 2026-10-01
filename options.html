@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Settings — WAMarketer</title>
+  <link rel="icon" href="icons/icon48.png">
+  <link rel="stylesheet" href="plans.css">
+  <link rel="stylesheet" href="ai-setup.css">
+  <style>
+    /* Same look as the onboarding (welcome.css): light background, white rounded cards, green accents. */
+    body { background: linear-gradient(180deg, #e9f8ef 0%, #f4f7f6 320px); min-height: 100vh; }
+    .embedded body { background: transparent; }
+    .wrap { max-width: 860px; }
+    .page-header { margin-bottom: 22px; }
+    .page-header nav { display: flex; gap: 18px; flex-wrap: wrap; }
+    .page-header nav a { font-size: 14px; font-weight: 600; text-decoration: none; }
+    .page-header nav a:hover { text-decoration: underline; }
+    .intro { margin-bottom: 22px; }
+    .intro .lead { margin-bottom: 0; }
+
+    .set-card { background: #fff; border: 1px solid var(--line); border-radius: 20px; padding: clamp(18px, 3.5vw, 30px); margin-bottom: 18px;
+      box-shadow: 0 1px 2px rgba(17,27,33,.05), 0 18px 40px rgba(7,94,84,.07); }
+    .embedded .set-card { box-shadow: none; }
+    .eyebrow { margin: 0 0 6px; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
+    .set-card h2 { margin: 0 0 6px; }
+    .set-card > .desc { color: var(--muted); margin: 0 0 20px; }
+
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+    .form-grid .full { grid-column: 1 / -1; }
+    .fld { display: grid; gap: 6px; align-content: start; }
+    .fld > span { font-weight: 700; font-size: 13px; }
+    .fld small { color: var(--subtle); font-size: 12px; }
+    .fld[hidden] { display: none; }
+    .fld input, .fld select {
+      width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--line);
+      background: var(--field); color: var(--ink); font: inherit;
+    }
+    .fld input:focus, .fld select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .fld input:disabled { opacity: .6; }
+    .saved-line { display: flex; justify-content: flex-end; margin-top: 12px; min-height: 18px; }
+    .saved { font-size: 13px; font-weight: 600; color: var(--accent-ink); opacity: 0; transition: opacity .2s; }
+    .saved.show { opacity: 1; }
+
+    .toggle { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .toggle p { margin: 4px 0 0; color: var(--muted); font-size: 14px; }
+    .switch { position: relative; width: 46px; height: 26px; flex-shrink: 0; margin-top: 2px; }
+    .switch input { position: absolute; opacity: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+    .switch i { position: absolute; inset: 0; background: #cfdad5; border-radius: 13px; transition: .2s; pointer-events: none; }
+    .switch i::after { content: ""; position: absolute; width: 20px; height: 20px; left: 3px; top: 3px; background: #fff; border-radius: 50%; transition: .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+    .switch input:checked + i { background: #0e7a5f; }
+    .switch input:checked + i::after { left: 23px; }
+    .switch input:focus-visible + i { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+
+    .checks { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 10px; }
+    .checks li { position: relative; padding-left: 30px; color: var(--muted); line-height: 1.55; }
+    .checks li::before {
+      content: ""; position: absolute; left: 0; top: 2px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent-soft);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23075e54' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E");
+      background-size: 12px; background-position: center; background-repeat: no-repeat;
+    }
+    .set-card .msg:not(.show) { display: none; }
+    .set-card .msg { margin-top: 14px; }
+    footer { text-align: center; color: var(--subtle); font-size: 13px; margin-top: 28px; }
+    .embedded footer { display: none; }
+    @media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="page-header">
+      <img class="logo-light" src="downlabs-logo.png" alt="WAMarketer — Bulk Sender & CRM">
+      <nav aria-label="Pages">
+        <a href="welcome.html">Getting started</a>
+        <a href="plans.html">Plan &amp; License</a>
+      </nav>
+    </header>
+
+    <div class="intro">
+      <h1>Settings</h1>
+      <p class="lead">Connect your AI and tune how WAMarketer replies. Your keys and data stay in this browser; AI requests go straight from here to the provider you pick.</p>
+    </div>
+
+    <section class="set-card" id="ai" aria-labelledby="ai-title">
+      <p class="eyebrow">AI replies</p>
+      <h2 id="ai-title">Connect your AI</h2>
+      <p class="desc">Let AI answer customers who reply to your campaigns, around the clock. Also used for previews, summaries, translation and the CRM assistant.</p>
+      <div id="aiMount"></div>
+    </section>
+
+    <section class="set-card" id="voice" aria-labelledby="voice-title">
+      <p class="eyebrow">Voice notes</p>
+      <h2 id="voice-title">Voice message transcription</h2>
+      <p class="desc">Turns incoming voice notes into text so the AI can reply to them. Needs a Whisper-compatible provider.</p>
+      <div class="form-grid">
+        <label class="fld">
+          <span>Provider</span>
+          <select id="sttProvider">
+            <option value="auto">Automatic (same as AI provider when possible)</option>
+            <option value="openai">OpenAI (Whisper)</option>
+            <option value="groq">Groq (Whisper, fast &amp; cheap)</option>
+            <option value="custom">Custom OpenAI-compatible</option>
+            <option value="off">Off</option>
+          </select>
+          <small id="sttResolved"></small>
+        </label>
+        <label class="fld">
+          <span>Model</span>
+          <input type="text" id="sttModel" spellcheck="false" placeholder="Default for provider">
+        </label>
+        <label class="fld">
+          <span>Language</span>
+          <select id="sttLanguage">
+            <option value="">Auto-detect</option>
+            <option value="en">English</option>
+            <option value="ur">Urdu</option>
+            <option value="hi">Hindi</option>
+            <option value="ar">Arabic</option>
+            <option value="ru">Russian</option>
+            <option value="tr">Turkish</option>
+            <option value="fa">Persian</option>
+          </select>
+          <small>Choose the language spoken in the voice note. Urdu uses Urdu script when supported.</small>
+        </label>
+        <label class="fld full" id="sttKeyField">
+          <span id="sttKeyLabel">API key</span>
+          <input type="password" id="sttKey" autocomplete="off" spellcheck="false" placeholder="Paste API key">
+          <small>The same key as in “Connect your AI” when it's the same provider.</small>
+        </label>
+      </div>
+      <div class="saved-line"><span class="saved" id="savedVoice">Saved</span></div>
+    </section>
+
+    <section class="set-card" id="tuning" aria-labelledby="tuning-title">
+      <p class="eyebrow">Auto-replies</p>
+      <h2 id="tuning-title">Reply behaviour</h2>
+      <p class="desc">How long the AI waits before answering, and how long and creative its replies are.</p>
+      <div class="form-grid">
+        <label class="fld">
+          <span>Reply delay (seconds)</span>
+          <input type="number" id="replyDelay" min="1" max="120" step="1">
+          <small>Wait before sending a reply, so it feels natural. 1–120 s.</small>
+        </label>
+        <label class="fld">
+          <span>Wait for more messages (seconds)</span>
+          <input type="number" id="debounceTime" min="3" max="120" step="1">
+          <small>Groups quick consecutive messages into one reply. 3–120 s.</small>
+        </label>
+        <label class="fld">
+          <span>Max reply length (tokens)</span>
+          <input type="number" id="maxTokens" min="50" max="4000" step="50">
+          <small>50–4000. Around 500 fits a normal chat reply.</small>
+        </label>
+        <label class="fld">
+          <span>Creativity (temperature)</span>
+          <input type="number" id="temperature" min="0" max="1" step="0.1">
+          <small>0 = precise, 1 = creative. Ignored by models that don't support it.</small>
+        </label>
+      </div>
+      <div class="saved-line"><span class="saved" id="savedTuning">Saved</span></div>
+    </section>
+
+    <section class="set-card" id="access" aria-labelledby="access-title">
+      <p class="eyebrow">Permissions</p>
+      <div class="toggle">
+        <div>
+          <h2 id="access-title">Extra site access</h2>
+          <p>Needed to import a web page into the Knowledge Base, or to use a custom AI endpoint on a host that isn't built in. Chrome will ask you to confirm.</p>
+        </div>
+        <label class="switch"><input type="checkbox" id="allSites" aria-labelledby="access-title"><i></i></label>
+      </div>
+      <div class="msg" id="accessStatus" role="status"></div>
+    </section>
+
+    <section class="set-card" aria-labelledby="data-title">
+      <p class="eyebrow">Privacy</p>
+      <h2 id="data-title">Your data</h2>
+      <ul class="checks">
+        <li>Contacts, campaigns, flows, logs and the knowledge base are stored in this browser only.</li>
+        <li>API keys are kept in local extension storage (not synced) and sent only to the provider you selected.</li>
+        <li>Use Export / Import in the CRM Settings to back up or move your data.</li>
+      </ul>
+      <div class="row">
+        <button class="btn primary" type="button" id="openWa">Open WhatsApp Web</button>
+        <button class="btn" type="button" id="openCrm">Open CRM</button>
+      </div>
+    </section>
+
+    <footer>WAMarketer · v<span id="version"></span></footer>
+  </div>
+  <script src="ai-providers.js"></script>
+  <script src="ai-setup.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

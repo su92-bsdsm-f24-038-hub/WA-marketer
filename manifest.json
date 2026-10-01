@@ -1,0 +1,122 @@
+{
+   "manifest_version": 3,
+   "name": "WAMarketer — Sales Assistant & CRM for WhatsApp Web",
+   "short_name": "WAMarketer",
+   "version": "4.2.0",
+   "description": "Sales assistant & CRM for WhatsApp Web: personalized messages to your contacts, follow-up reminders, AI replies and a built-in CRM.",
+   "action": {
+      "default_icon": {
+         "16": "icons/icon16.png",
+         "24": "icons/icon24.png",
+         "32": "icons/icon32.png",
+         "48": "icons/icon48.png",
+         "64": "icons/icon64.png",
+         "128": "icons/icon128.png"
+      },
+      "default_popup": "popup.html",
+      "default_title": "WAMarketer — Sales Assistant & CRM"
+   },
+   "icons": {
+      "16": "icons/icon16.png",
+      "24": "icons/icon24.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "64": "icons/icon64.png",
+      "128": "icons/icon128.png"
+   },
+   "background": {
+      "service_worker": "background.js"
+   },
+   "options_ui": {
+      "page": "options.html",
+      "open_in_tab": true
+   },
+   "content_scripts": [
+      {
+         "js": [
+            "content.js"
+         ],
+         "matches": [
+            "https://web.whatsapp.com/*"
+         ],
+         "run_at": "document_end"
+      },
+      {
+         "js": [
+            "bulk-core.js",
+            "bulk-runner.js"
+         ],
+         "matches": [
+            "https://web.whatsapp.com/*"
+         ],
+         "run_at": "document_idle"
+      },
+      {
+         "js": [
+            "sidebar-layout.js",
+            "tour.js",
+            "wa-tours.js"
+         ],
+         "css": [
+            "tour.css"
+         ],
+         "matches": [
+            "https://web.whatsapp.com/*"
+         ],
+         "run_at": "document_idle"
+      }
+   ],
+   "permissions": [
+      "storage",
+      "tabs",
+      "alarms",
+      "notifications",
+      "clipboardWrite",
+      "unlimitedStorage"
+   ],
+   "host_permissions": [
+      "https://web.whatsapp.com/*",
+      "https://*.whatsapp.net/*",
+      "https://api.gumroad.com/*",
+      "https://api.openai.com/*",
+      "https://api.anthropic.com/*",
+      "https://generativelanguage.googleapis.com/*",
+      "https://api.groq.com/*",
+      "https://openrouter.ai/*",
+      "https://api.deepseek.com/*",
+      "https://api.mistral.ai/*",
+      "https://api.x.ai/*",
+      "https://api.together.xyz/*",
+      "http://localhost:11434/*",
+      "http://127.0.0.1:11434/*"
+   ],
+   "optional_host_permissions": [
+      "https://*/*",
+      "http://*/*"
+   ],
+   "web_accessible_resources": [
+      {
+         "matches": [
+            "https://web.whatsapp.com/*"
+         ],
+         "resources": [
+            "sidebar.js",
+            "voice-extractor-page.js",
+            "idb-interceptor-page.js",
+            "wa-store-send-page.js",
+            "wa-presence-page.js",
+            "wa-message-body-page.js",
+            "wa-reaction-page.js",
+            "chunks/*.js",
+            "logo.png",
+            "downlabs-logo.png",
+            "downlabs-logo-dark.png",
+            "sidebarlogo.png",
+            "icons/*.png",
+            "assets/fonts/*.ttf",
+            "wa-bulk-page.js",
+            "bulk.html"
+         ]
+      }
+   ]
+}

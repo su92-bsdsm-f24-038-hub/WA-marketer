@@ -1,0 +1,39 @@
+/* WAMarketer — "Connect your AI" form (ai-setup.js). Builds on the plans.css tokens. */
+.ai-setup { display: grid; gap: 18px; }
+.ai-label { font-size: 13px; font-weight: 700; color: var(--ink); margin-bottom: -8px; }
+
+.ai-setup .providers { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+.ai-setup .provider {
+  position: relative; text-align: left; border: 2px solid var(--line); background: #fff; color: var(--ink);
+  border-radius: 12px; padding: 10px 12px; cursor: pointer; font: inherit; transition: border-color .15s, box-shadow .15s;
+}
+.ai-setup .provider:hover { border-color: #b9d9c8; }
+.ai-setup .provider[aria-checked="true"] { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.ai-setup .provider:focus-visible { outline: 3px solid color-mix(in srgb, var(--accent) 45%, transparent); outline-offset: 2px; }
+.ai-setup .provider strong { display: block; font-size: 14px; }
+.ai-setup .provider span { display: block; font-size: 12px; color: var(--subtle); margin-top: 2px; }
+.ai-setup .provider .dot { position: absolute; top: 10px; right: 10px; width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: none; }
+.ai-setup .provider.has-key .dot { display: block; }
+
+.ai-fields { display: grid; gap: 16px; }
+.ai-setup .field { display: grid; gap: 6px; }
+.ai-setup .field[hidden] { display: none; }
+.ai-setup .field > span:first-child { font-weight: 700; font-size: 13px; }
+.ai-setup .field small { color: var(--subtle); font-size: 12px; }
+.ai-setup .with-btn { display: flex; gap: 8px; }
+.ai-setup .with-btn input { flex: 1; min-width: 0; }
+.ai-setup input[type=text], .ai-setup input[type=password], .ai-setup input[type=url] {
+  width: 100%; min-height: 44px; padding: 10px 12px; border-radius: 10px; border: 1.5px solid var(--line);
+  background: var(--field); color: var(--ink); font: inherit;
+}
+.ai-setup input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+
+.ai-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.ai-saved { font-size: 13px; font-weight: 600; color: var(--accent-ink); opacity: 0; transition: opacity .2s; }
+.ai-saved.show { opacity: 1; }
+.ai-setup .msg { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.ai-setup .msg:not(.show) { display: none; }
+
+@media (max-width: 520px) {
+  .ai-setup .providers { grid-template-columns: 1fr 1fr; }
+}
